@@ -1,0 +1,58 @@
+@import 'tailwindcss';
+@import 'tw-animate-css';
+@import 'shadcn/tailwind.css';
+
+@custom-variant dark (&:is(.dark *));
+
+:root { color-scheme: light; }
+
+@theme inline {
+  /* Tipografía de marca: Playfair Display (títulos), Lora (texto), Montserrat (etiquetas, igual que el packaging) */
+  --font-display: var(--font-playfair), Georgia, serif;
+  --font-serif: var(--font-lora), Georgia, serif;
+  --font-sans: var(--font-montserrat), Arial, sans-serif;
+
+  /* Base */
+  --color-papel: #f5f2ed;
+  --color-arena: #ebe5da;
+  --color-tinta: #303039;
+  --color-oro: #a8823a;
+
+  /* Paleta ELEMENTOS — cada color lleva el nombre de una creación */
+  --color-misterio: #002060;
+  --color-extasis: #b42630;
+  --color-divino-tesoro: #884538;
+  --color-ritual: #997b4b;
+  --color-dharma: #e67f4c;
+  --color-presagio: #556b31;
+  --color-eclipse: #8f8d8d;
+  --color-revelacion: #6a8c9a;
+  --color-raices: #717bb7;
+  --color-mantra: #521776;
+  --color-eter: #5ce1e6;
+  --color-alquimia: #823039;
+}
+
+@layer base {
+  * { box-sizing: border-box; }
+  html { scroll-behavior: smooth; scroll-padding-top: 5rem; }
+  body { margin: 0; background: var(--color-papel); color: var(--color-tinta); }
+  :focus-visible { outline: 2px solid var(--color-oro); outline-offset: 3px; }
+  summary::-webkit-details-marker { display: none; }
+}
+
+::selection { background: #002060; color: #f5f2ed; }
+
+@keyframes elevar {
+  from { opacity: 0; transform: translateY(18px); }
+  to { opacity: 1; transform: none; }
+}
+.elevar { animation: elevar 0.9s cubic-bezier(0.2, 0.7, 0.2, 1) both; }
+.elevar-2 { animation-delay: 0.15s; }
+.elevar-3 { animation-delay: 0.3s; }
+
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+  .elevar { animation: none; }
+  * { transition-duration: 0s !important; }
+}
