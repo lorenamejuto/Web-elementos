@@ -1,6 +1,7 @@
 import Image from 'next/image'
 import { FlaskConical, GraduationCap, ShieldCheck } from 'lucide-react'
 import { MenuMovil } from '@/components/menu-movil'
+import { PortadaRotativa } from '@/components/portada-rotativa'
 import { contacto, perfumeriaDeNicho, perfumeriaHogar, type Mundo, type Producto } from '@/lib/catalogo'
 
 const nav = [
@@ -10,6 +11,9 @@ const nav = [
   { href: '#nosotras', label: 'Nosotras' },
 ]
 
+// Todos los perfumes del catálogo (cualquier colección) rotan en la portada.
+const perfumesDeCatalogo = perfumeriaDeNicho.lineas.flatMap((l) => l.productos).filter((p) => p.formato.startsWith('Perfume'))
+
 const elementosDeUnaCreacion = ['Una materia prima', 'Una memoria', 'Una emoción', 'Una imagen', 'Una textura', 'Un lugar', 'Una idea', 'Una técnica', 'Dos miradas diferentes']
 
 function Etiqueta({ children, className = '' }: { children: React.ReactNode; className?: string }) {
@@ -18,7 +22,7 @@ function Etiqueta({ children, className = '' }: { children: React.ReactNode; cla
 
 function Marca({ claro = false }: { claro?: boolean }) {
   return (
-    <a href="#inicio" className="flex items-center gap-3" aria-label="ELEMENTOS — Universo Olfativo, ir al inicio">
+    <a href="#inicio" className="flex shrink-0 items-center gap-3" aria-label="ELEMENTOS — Universo Olfativo, ir al inicio">
       <Image src={claro ? '/img/logo-elementos-claro.png' : '/img/logo-elementos.png'} alt="" width={44} height={44} priority />
       <span className="flex flex-col leading-none">
         <span className={`font-sans text-[15px] font-medium tracking-[0.32em] ${claro ? 'text-papel' : 'text-misterio'}`}>ELEMENTOS</span>
@@ -33,7 +37,7 @@ function Encabezado() {
     <header className="sticky top-0 z-30 border-b border-tinta/10 bg-papel/90 backdrop-blur">
       <div className="mx-auto flex max-w-[1440px] items-center justify-between px-5 py-3 lg:px-12">
         <Marca />
-        <nav className="hidden items-center gap-10 font-sans text-[11px] font-semibold uppercase tracking-[0.24em] md:flex" aria-label="Navegación principal">
+        <nav className="hidden items-center gap-6 whitespace-nowrap font-sans text-[11px] font-semibold uppercase tracking-[0.2em] lg:flex xl:gap-10 xl:tracking-[0.24em]" aria-label="Navegación principal">
           {nav.map((item) => (
             <a key={item.href} href={item.href} className="transition-colors hover:text-extasis">{item.label}</a>
           ))}
@@ -65,17 +69,7 @@ function Portada() {
             <a href="#nosotras" className="border-b border-misterio pb-1 font-sans text-[11px] font-semibold uppercase tracking-[0.22em] text-misterio transition-colors hover:border-extasis hover:text-extasis">Quiénes somos</a>
           </div>
         </div>
-        <div className="relative mx-auto w-full max-w-[460px]">
-          <div className="relative aspect-[3/4] overflow-hidden rounded-t-full">
-            <Image src="/img/divino-tesoro.jpg" alt="Perfume Divino Tesoro junto a lima, jazmín y menta" fill priority sizes="(min-width: 1024px) 460px, 90vw" className="object-cover" />
-          </div>
-          <div className="absolute -bottom-8 left-0 w-[38%] overflow-hidden border-[6px] border-papel shadow-xl sm:-left-12">
-            <div className="relative aspect-[3/4]">
-              <Image src="/img/extasis.jpg" alt="Perfume Éxtasis junto a pomelo y madera de oud" fill sizes="180px" className="object-cover" />
-            </div>
-          </div>
-          <p className="absolute -right-2 bottom-6 hidden rotate-90 origin-bottom-right font-sans text-[10px] uppercase tracking-[0.3em] text-tinta/50 sm:block">Divino Tesoro · Éxtasis</p>
-        </div>
+        <PortadaRotativa perfumes={perfumesDeCatalogo} />
       </div>
     </section>
   )

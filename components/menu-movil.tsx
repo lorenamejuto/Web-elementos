@@ -5,7 +5,7 @@ import { useRef } from 'react'
 export function MenuMovil({ items }: { items: { href: string; label: string }[] }) {
   const ref = useRef<HTMLDetailsElement>(null)
   return (
-    <details ref={ref} className="group relative md:hidden">
+    <details ref={ref} className="group relative lg:hidden">
       <summary className="cursor-pointer list-none p-2 font-sans text-[11px] font-semibold uppercase tracking-[0.24em] text-misterio">
         <span className="group-open:hidden">Menú</span>
         <span className="hidden group-open:inline">Cerrar</span>
