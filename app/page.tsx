@@ -1,8 +1,9 @@
 import Image from 'next/image'
 import { FlaskConical, GraduationCap, ShieldCheck } from 'lucide-react'
 import { MenuMovil } from '@/components/menu-movil'
+import { PestanasColeccion } from '@/components/pestanas-coleccion'
 import { PortadaRotativa } from '@/components/portada-rotativa'
-import { contacto, perfumeriaDeNicho, perfumeriaHogar, type Mundo, type Producto } from '@/lib/catalogo'
+import { contacto, perfumeriaDeNicho, perfumeriaHogar, type Linea, type Mundo, type Producto } from '@/lib/catalogo'
 
 const nav = [
   { href: '#nicho', label: 'Perfumería de nicho' },
@@ -12,7 +13,7 @@ const nav = [
 ]
 
 // Todos los perfumes del catálogo (cualquier colección) rotan en la portada.
-const perfumesDeCatalogo = perfumeriaDeNicho.lineas.flatMap((l) => l.productos).filter((p) => p.formato.startsWith('Perfume'))
+const perfumesDeCatalogo = perfumeriaDeNicho.colecciones.flatMap((c) => c.lineas.flatMap((l) => l.productos)).filter((p) => p.formato.startsWith('Perfume'))
 
 const elementosDeUnaCreacion = ['Una materia prima', 'Una memoria', 'Una emoción', 'Una imagen', 'Una textura', 'Un lugar', 'Una idea', 'Una técnica', 'Dos miradas diferentes']
 
@@ -119,6 +120,26 @@ function TarjetaProducto({ producto, indice }: { producto: Producto; indice: num
   )
 }
 
+function Lineas({ lineas }: { lineas: Linea[] }) {
+  return (
+    <div className="space-y-20">
+      {lineas
+        .filter((l) => l.productos.length > 0)
+        .map((linea) => (
+          <div key={linea.titulo} className="grid gap-8 lg:grid-cols-[260px_1fr] lg:gap-12">
+            <div className="lg:sticky lg:top-28 lg:self-start">
+              <h3 className="font-display text-[clamp(2.25rem,3.4vw,3rem)] leading-[1.05] italic text-misterio">{linea.titulo}</h3>
+              <p className="mt-3 max-w-xs font-serif text-base leading-relaxed text-tinta/70 lg:text-lg">{linea.descripcion}</p>
+            </div>
+            <div className="grid gap-x-6 gap-y-14 sm:grid-cols-2 xl:grid-cols-3">
+              {linea.productos.map((producto, i) => <TarjetaProducto key={producto.nombre} producto={producto} indice={i} />)}
+            </div>
+          </div>
+        ))}
+    </div>
+  )
+}
+
 function SeccionMundo({ mundo, titulo, intro, acento }: { mundo: Mundo; titulo: React.ReactNode; intro: string; acento: string }) {
   return (
     <section id={mundo.id} className="px-5 py-24 lg:px-12 lg:py-32">
@@ -130,19 +151,12 @@ function SeccionMundo({ mundo, titulo, intro, acento }: { mundo: Mundo; titulo: 
           </div>
           <p className="max-w-md font-serif text-lg leading-relaxed text-tinta/75 lg:justify-self-end">{intro}</p>
         </div>
-        <div className="space-y-20">
-          {mundo.lineas.map((linea) => (
-            <div key={linea.titulo} className="grid gap-8 lg:grid-cols-[260px_1fr] lg:gap-12">
-              <div className="lg:sticky lg:top-28 lg:self-start">
-                <h3 className="font-display text-[clamp(2.25rem,3.4vw,3rem)] leading-[1.05] italic text-misterio">{linea.titulo}</h3>
-                <p className="mt-3 max-w-xs font-serif text-base leading-relaxed text-tinta/70 lg:text-lg">{linea.descripcion}</p>
-              </div>
-              <div className="grid gap-x-6 gap-y-14 sm:grid-cols-2 xl:grid-cols-3">
-                {linea.productos.map((producto, i) => <TarjetaProducto key={producto.nombre} producto={producto} indice={i} />)}
-              </div>
-            </div>
-          ))}
-        </div>
+        <PestanasColeccion
+          acento={acento}
+          pestanas={mundo.colecciones
+            .filter((c) => c.lineas.some((l) => l.productos.length > 0))
+            .map((c) => ({ id: c.id, nombre: c.nombre, contenido: <Lineas lineas={c.lineas} /> }))}
+        />
       </div>
     </section>
   )
