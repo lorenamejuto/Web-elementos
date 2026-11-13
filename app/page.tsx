@@ -23,7 +23,7 @@ function Etiqueta({ children, className = '' }: { children: React.ReactNode; cla
 
 // Título de cada sección principal: el nombre del mundo, grande y en su color, para que cada sección se distinga de un vistazo.
 function Capitulo({ nombre, acento }: { nombre: string; acento: string }) {
-  return <h2 className={`mb-8 font-display text-[clamp(3rem,7vw,6.5rem)] italic leading-[0.95] tracking-[-0.02em] lg:mb-10 ${acento}`}>{nombre}</h2>
+  return <h2 className={`mb-8 font-display text-[clamp(2.55rem,5.95vw,5.5rem)] italic leading-[0.95] tracking-[-0.02em] lg:mb-10 ${acento}`}>{nombre}</h2>
 }
 
 function Marca({ claro = false }: { claro?: boolean }) {
