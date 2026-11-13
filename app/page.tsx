@@ -13,7 +13,7 @@ const nav = [
 const elementosDeUnaCreacion = ['Una materia prima', 'Una memoria', 'Una emoción', 'Una imagen', 'Una textura', 'Un lugar', 'Una idea', 'Una técnica', 'Dos miradas diferentes']
 
 function Etiqueta({ children, className = '' }: { children: React.ReactNode; className?: string }) {
-  return <p className={`font-sans text-[11px] font-semibold uppercase tracking-[0.28em] ${className}`}>{children}</p>
+  return <p className={`font-sans text-[11px] font-semibold uppercase tracking-[0.28em] lg:text-[13px] ${className}`}>{children}</p>
 }
 
 function Marca({ claro = false }: { claro?: boolean }) {
@@ -57,7 +57,7 @@ function Portada() {
             Convertir<br />lo invisible<br /><em className="text-extasis">en aroma.</em>
           </h1>
           <p className="elevar elevar-3 mt-9 max-w-lg font-serif text-lg leading-relaxed text-tinta/80 lg:text-xl">
-            ELEMENTOS es perfumería de nicho independiente, creada en Argentina por dos miradas distintas que encontraron un lenguaje común. Formulamos perfumes, brumas, difusores y perfuminas en nuestro laboratorio, y cada creación nace de su propio proceso: una memoria, una materia prima o una emoción que buscamos llevar al aroma.
+            ELEMENTOS es perfumería de nicho independiente, creada en Argentina por dos miradas distintas que encontraron un lenguaje común. Formulamos perfumes, brumas corporales, difusores y perfuminas en nuestro laboratorio, y cada creación nace de su propio proceso: una memoria, una materia prima o una emoción que buscamos llevar al aroma.
           </p>
           <div className="elevar elevar-3 mt-10 flex flex-wrap items-center gap-x-8 gap-y-4">
             <a href="#nicho" className="bg-misterio px-7 py-4 font-sans text-[11px] font-semibold uppercase tracking-[0.22em] text-papel transition-colors hover:bg-extasis">Conocer las fragancias</a>
@@ -138,10 +138,10 @@ function SeccionMundo({ mundo, titulo, intro, acento }: { mundo: Mundo; titulo: 
         </div>
         <div className="space-y-20">
           {mundo.lineas.map((linea) => (
-            <div key={linea.titulo} className="grid gap-8 lg:grid-cols-[220px_1fr] lg:gap-12">
+            <div key={linea.titulo} className="grid gap-8 lg:grid-cols-[260px_1fr] lg:gap-12">
               <div className="lg:sticky lg:top-28 lg:self-start">
-                <h3 className="font-display text-3xl italic text-misterio">{linea.titulo}</h3>
-                <p className="mt-2 max-w-xs font-serif text-base leading-relaxed text-tinta/70">{linea.descripcion}</p>
+                <h3 className="font-display text-[clamp(2.25rem,3.4vw,3rem)] leading-[1.05] italic text-misterio">{linea.titulo}</h3>
+                <p className="mt-3 max-w-xs font-serif text-base leading-relaxed text-tinta/70 lg:text-lg">{linea.descripcion}</p>
               </div>
               <div className="grid gap-x-6 gap-y-14 sm:grid-cols-2 xl:grid-cols-3">
                 {linea.productos.map((producto, i) => <TarjetaProducto key={producto.nombre} producto={producto} indice={i} />)}
@@ -236,7 +236,7 @@ function Laboratorio() {
 
         <div className="mt-24 lg:mt-32">
           <div className="mb-10 flex flex-col gap-4 border-b border-tinta/20 pb-6 md:flex-row md:items-end md:justify-between">
-            <h3 className="font-display text-[clamp(2rem,3.5vw,3rem)] leading-tight text-misterio">Nuestro <em>compromiso</em></h3>
+            <h3 className="font-display text-[clamp(2.25rem,3.4vw,3rem)] leading-[1.05] text-misterio">Nuestro <em>compromiso</em></h3>
             <p className="max-w-md font-serif text-base leading-relaxed text-tinta/70">Lo que no negociamos, sin importar la creación.</p>
           </div>
           <ul className="grid gap-6 md:grid-cols-3">
@@ -333,7 +333,7 @@ function Nosotras() {
         <div className="mt-24 grid gap-14 lg:mt-32 lg:grid-cols-[1fr_1fr] lg:gap-20">
           <div>
             <Etiqueta className="text-oro">Lo que soñamos</Etiqueta>
-            <h3 className="mt-5 font-display text-[clamp(2rem,3.2vw,3rem)] leading-[1.05] text-misterio">Un proyecto que crece<br /><em>sin perder por qué nació.</em></h3>
+            <h3 className="mt-5 font-display text-[clamp(2.25rem,3.4vw,3rem)] leading-[1.05] text-misterio">Un proyecto que crece<br /><em>sin perder por qué nació.</em></h3>
             <p className="mt-7 max-w-md font-serif text-lg leading-relaxed text-tinta/75">
               No buscamos solo vender productos. Queremos construir algo con identidad y recorrido, y seguir disfrutando de crear juntas.
             </p>
