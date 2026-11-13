@@ -21,6 +21,18 @@ function Etiqueta({ children, className = '' }: { children: React.ReactNode; cla
   return <p className={`font-sans text-[11px] font-semibold uppercase tracking-[0.28em] lg:text-[13px] ${className}`}>{children}</p>
 }
 
+// Apertura de cada capítulo numerado (01–04): número grande + nombre, para que cada mundo se distinga de un vistazo.
+function Capitulo({ numero, nombre, acento }: { numero: string; nombre: string; acento: string }) {
+  return (
+    <div className={`mb-10 flex items-end gap-4 lg:mb-14 lg:gap-6 ${acento}`}>
+      <span className="font-display text-[clamp(4rem,9vw,7.5rem)] italic leading-[0.75]" aria-hidden="true">{numero}</span>
+      <p className="pb-1 font-sans text-[clamp(0.9rem,1.5vw,1.25rem)] font-semibold uppercase leading-snug tracking-[0.24em]">
+        <span className="sr-only">{numero} — </span>{nombre}
+      </p>
+    </div>
+  )
+}
+
 function Marca({ claro = false }: { claro?: boolean }) {
   return (
     <a href="#inicio" className="flex shrink-0 items-center gap-3" aria-label="ELEMENTOS — Universo Olfativo, ir al inicio">
@@ -140,22 +152,34 @@ function Lineas({ lineas }: { lineas: Linea[] }) {
   )
 }
 
+function Proximamente({ nombre, lineas }: { nombre: string; lineas: Linea[] }) {
+  return (
+    <div className="border border-dashed border-tinta/25 px-6 py-16 text-center lg:py-24">
+      <p className="font-sans text-[11px] font-semibold uppercase tracking-[0.28em] text-oro lg:text-[13px]">Nueva colección · Próximamente</p>
+      <p className="mt-5 font-display text-[clamp(2.25rem,4vw,3.5rem)] italic leading-tight text-misterio">{nombre}</p>
+      {lineas.length > 0 && <p className="mt-4 font-serif text-lg text-tinta/70">{lineas.map((l) => l.titulo).join(' · ')}</p>}
+    </div>
+  )
+}
+
 function SeccionMundo({ mundo, titulo, intro, acento }: { mundo: Mundo; titulo: React.ReactNode; intro: string; acento: string }) {
   return (
     <section id={mundo.id} className="px-5 py-24 lg:px-12 lg:py-32">
       <div className="mx-auto max-w-[1440px]">
+        <Capitulo numero={mundo.numero} nombre={mundo.nombre} acento={acento} />
         <div className="mb-16 grid gap-6 border-b border-tinta/20 pb-8 lg:grid-cols-[1fr_1fr] lg:items-end">
           <div>
-            <Etiqueta className={acento}>{mundo.numero} — {mundo.nombre}</Etiqueta>
-            <h2 className="mt-5 font-display text-[clamp(2.6rem,5vw,4.5rem)] leading-[0.98] tracking-[-0.02em] text-misterio">{titulo}</h2>
+            <h2 className="font-display text-[clamp(2.6rem,5vw,4.5rem)] leading-[0.98] tracking-[-0.02em] text-misterio">{titulo}</h2>
           </div>
           <p className="max-w-md font-serif text-lg leading-relaxed text-tinta/75 lg:justify-self-end">{intro}</p>
         </div>
         <PestanasColeccion
           acento={acento}
           pestanas={mundo.colecciones
-            .filter((c) => c.lineas.some((l) => l.productos.length > 0))
-            .map((c) => ({ id: c.id, nombre: c.nombre, contenido: <Lineas lineas={c.lineas} /> }))}
+            .map((c) => {
+              const proximamente = !c.lineas.some((l) => l.productos.length > 0)
+              return { id: c.id, nombre: c.nombre, proximamente, contenido: proximamente ? <Proximamente nombre={c.nombre} lineas={c.lineas} /> : <Lineas lineas={c.lineas} /> }
+            })}
         />
       </div>
     </section>
@@ -210,10 +234,10 @@ function Laboratorio() {
   return (
     <section id="laboratorio" className="border-y border-tinta/15 bg-arena px-5 py-24 lg:px-12 lg:py-36">
       <div className="mx-auto max-w-[1440px]">
+        <Capitulo numero="03" nombre="Laboratorio" acento="text-ritual" />
         <div className="grid gap-16 lg:grid-cols-[0.9fr_1.1fr] lg:items-center">
           <div>
-            <Etiqueta className="text-ritual">03 — Laboratorio</Etiqueta>
-            <h2 className="mt-5 font-display text-[clamp(2.6rem,5vw,4.5rem)] leading-[0.98] tracking-[-0.02em] text-misterio">Aprender, formular,<br /><em>cuidar cada detalle.</em></h2>
+            <h2 className="font-display text-[clamp(2.6rem,5vw,4.5rem)] leading-[0.98] tracking-[-0.02em] text-misterio">Aprender, formular,<br /><em>cuidar cada detalle.</em></h2>
             <p className="mt-8 max-w-lg font-serif text-lg leading-relaxed text-tinta/80 lg:text-xl">
               Todo empezó con cursos, materias primas y los primeros acordes. Hoy el laboratorio es el centro de ELEMENTOS: ahí investigamos, comparamos, probamos y validamos cada creación.
             </p>
@@ -286,6 +310,7 @@ function Nosotras() {
   return (
     <section id="nosotras" className="px-5 py-24 lg:px-12 lg:py-32">
       <div className="mx-auto max-w-[1440px]">
+        <Capitulo numero="04" nombre="Nosotras" acento="text-extasis" />
         <div className="grid gap-16 lg:grid-cols-[0.95fr_1.05fr] lg:items-center lg:gap-24">
           <div className="relative">
             <div className="relative aspect-[3/4] overflow-hidden">
@@ -294,8 +319,7 @@ function Nosotras() {
             <div className="absolute -bottom-5 -right-5 -z-10 h-full w-full border border-oro/50" aria-hidden="true" />
           </div>
           <div>
-            <Etiqueta className="text-extasis">04 — Nosotras</Etiqueta>
-            <h2 className="mt-5 font-display text-[clamp(2.6rem,5vw,4.5rem)] leading-[0.98] tracking-[-0.02em] text-misterio">Dos miradas,<br /><em>un lenguaje común.</em></h2>
+            <h2 className="font-display text-[clamp(2.6rem,5vw,4.5rem)] leading-[0.98] tracking-[-0.02em] text-misterio">Dos miradas,<br /><em>un lenguaje común.</em></h2>
             <div className="mt-8 max-w-xl space-y-5 font-serif text-lg leading-relaxed text-tinta/80">
               <p>
                 ELEMENTOS nació antes que la marca. Nos encontramos desde una curiosidad compartida por la perfumería y, al acercarnos a ese mundo, descubrimos algo que no esperábamos: podíamos crear juntas.

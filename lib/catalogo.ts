@@ -44,8 +44,11 @@ export const perfumeriaDeNicho: Mundo = {
   colecciones: [
     {
       ...COLECCIONES.memorias,
-      // Próximamente: perfume y brumas.
-      lineas: [],
+      // Próximamente: completar productos. Mientras ninguna línea tenga productos, la pestaña muestra "Próximamente".
+      lineas: [
+        { titulo: 'Perfumes', descripcion: '', productos: [] },
+        { titulo: 'Brumas', descripcion: '', productos: [] },
+      ],
     },
     {
       ...COLECCIONES.mistica,
@@ -83,8 +86,12 @@ export const perfumeriaHogar: Mundo = {
   colecciones: [
     {
       ...COLECCIONES.memorias,
-      // Próximamente: home spray, jabón líquido y difusores.
-      lineas: [],
+      // Próximamente: completar productos. Mientras ninguna línea tenga productos, la pestaña muestra "Próximamente".
+      lineas: [
+        { titulo: 'Home spray', descripcion: '', productos: [] },
+        { titulo: 'Jabón líquido', descripcion: '', productos: [] },
+        { titulo: 'Difusores', descripcion: '', productos: [] },
+      ],
     },
     {
       ...COLECCIONES.mistica,
