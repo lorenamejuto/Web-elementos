@@ -21,16 +21,9 @@ function Etiqueta({ children, className = '' }: { children: React.ReactNode; cla
   return <p className={`font-sans text-[11px] font-semibold uppercase tracking-[0.28em] lg:text-[13px] ${className}`}>{children}</p>
 }
 
-// Apertura de cada capítulo numerado (01–04): número grande + nombre, para que cada mundo se distinga de un vistazo.
-function Capitulo({ numero, nombre, acento }: { numero: string; nombre: string; acento: string }) {
-  return (
-    <div className={`mb-10 flex items-end gap-4 lg:mb-14 lg:gap-6 ${acento}`}>
-      <span className="font-display text-[clamp(4rem,9vw,7.5rem)] italic leading-[0.75]" aria-hidden="true">{numero}</span>
-      <p className="pb-1 font-sans text-[clamp(0.9rem,1.5vw,1.25rem)] font-semibold uppercase leading-snug tracking-[0.24em]">
-        <span className="sr-only">{numero} — </span>{nombre}
-      </p>
-    </div>
-  )
+// Título de cada sección principal: el nombre del mundo, grande y en su color, para que cada sección se distinga de un vistazo.
+function Capitulo({ nombre, acento }: { nombre: string; acento: string }) {
+  return <h2 className={`mb-8 font-display text-[clamp(3rem,7vw,6.5rem)] italic leading-[0.95] tracking-[-0.02em] lg:mb-10 ${acento}`}>{nombre}</h2>
 }
 
 function Marca({ claro = false }: { claro?: boolean }) {
@@ -166,10 +159,10 @@ function SeccionMundo({ mundo, titulo, intro, acento }: { mundo: Mundo; titulo: 
   return (
     <section id={mundo.id} className="px-5 py-24 lg:px-12 lg:py-32">
       <div className="mx-auto max-w-[1440px]">
-        <Capitulo numero={mundo.numero} nombre={mundo.nombre} acento={acento} />
+        <Capitulo nombre={mundo.nombre} acento={acento} />
         <div className="mb-16 grid gap-6 border-b border-tinta/20 pb-8 lg:grid-cols-[1fr_1fr] lg:items-end">
           <div>
-            <h2 className="font-display text-[clamp(2.6rem,5vw,4.5rem)] leading-[0.98] tracking-[-0.02em] text-misterio">{titulo}</h2>
+            <p className="font-display text-[clamp(1.75rem,2.8vw,2.5rem)] leading-[1.1] text-misterio">{titulo}</p>
           </div>
           <p className="max-w-md font-serif text-lg leading-relaxed text-tinta/75 lg:justify-self-end">{intro}</p>
         </div>
@@ -234,10 +227,10 @@ function Laboratorio() {
   return (
     <section id="laboratorio" className="border-y border-tinta/15 bg-arena px-5 py-24 lg:px-12 lg:py-36">
       <div className="mx-auto max-w-[1440px]">
-        <Capitulo numero="03" nombre="Laboratorio" acento="text-ritual" />
-        <div className="grid gap-16 lg:grid-cols-[0.9fr_1.1fr] lg:items-center">
+        <Capitulo nombre="Laboratorio" acento="text-ritual" />
+        <div className="grid gap-16 lg:grid-cols-[0.9fr_1.1fr] lg:items-start">
           <div>
-            <h2 className="font-display text-[clamp(2.6rem,5vw,4.5rem)] leading-[0.98] tracking-[-0.02em] text-misterio">Aprender, formular,<br /><em>cuidar cada detalle.</em></h2>
+            <p className="font-display text-[clamp(1.75rem,2.8vw,2.5rem)] leading-[1.1] text-misterio">Aprender, formular,<br /><em>cuidar cada detalle.</em></p>
             <p className="mt-8 max-w-lg font-serif text-lg leading-relaxed text-tinta/80 lg:text-xl">
               Todo empezó con cursos, materias primas y los primeros acordes. Hoy el laboratorio es el centro de ELEMENTOS: ahí investigamos, comparamos, probamos y validamos cada creación.
             </p>
@@ -310,7 +303,7 @@ function Nosotras() {
   return (
     <section id="nosotras" className="px-5 py-24 lg:px-12 lg:py-32">
       <div className="mx-auto max-w-[1440px]">
-        <Capitulo numero="04" nombre="Nosotras" acento="text-extasis" />
+        <Capitulo nombre="Nosotras" acento="text-extasis" />
         <div className="grid gap-16 lg:grid-cols-[0.95fr_1.05fr] lg:items-center lg:gap-24">
           <div className="relative">
             <div className="relative aspect-[3/4] overflow-hidden">
@@ -319,7 +312,7 @@ function Nosotras() {
             <div className="absolute -bottom-5 -right-5 -z-10 h-full w-full border border-oro/50" aria-hidden="true" />
           </div>
           <div>
-            <h2 className="font-display text-[clamp(2.6rem,5vw,4.5rem)] leading-[0.98] tracking-[-0.02em] text-misterio">Dos miradas,<br /><em>un lenguaje común.</em></h2>
+            <p className="font-display text-[clamp(1.75rem,2.8vw,2.5rem)] leading-[1.1] text-misterio">Dos miradas,<br /><em>un lenguaje común.</em></p>
             <div className="mt-8 max-w-xl space-y-5 font-serif text-lg leading-relaxed text-tinta/80">
               <p>
                 ELEMENTOS nació antes que la marca. Nos encontramos desde una curiosidad compartida por la perfumería y, al acercarnos a ese mundo, descubrimos algo que no esperábamos: podíamos crear juntas.

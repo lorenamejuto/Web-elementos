@@ -27,7 +27,6 @@ export type Coleccion = {
 
 export type Mundo = {
   id: string
-  numero: string
   nombre: string
   colecciones: Coleccion[] // en orden de aparición: la más nueva primero
 }
@@ -39,7 +38,6 @@ export const COLECCIONES = {
 
 export const perfumeriaDeNicho: Mundo = {
   id: 'nicho',
-  numero: '01',
   nombre: 'Perfumería de nicho',
   colecciones: [
     {
@@ -81,7 +79,6 @@ export const perfumeriaDeNicho: Mundo = {
 
 export const perfumeriaHogar: Mundo = {
   id: 'hogar',
-  numero: '02',
   nombre: 'Perfumería para el hogar',
   colecciones: [
     {
