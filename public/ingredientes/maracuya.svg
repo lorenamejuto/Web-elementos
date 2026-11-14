@@ -1,4 +1,5 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" fill="none" stroke="currentColor" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round" role="img" aria-label="Maracuyá">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" fill="none" stroke="currentColor" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round" role="img" aria-label="Maracuyá">
+<g data-norm transform="translate(32 32) scale(1.000) translate(-32.00 -34.00)" stroke-width="1.200">
   <circle cx="32" cy="34" r="16"/>
   <circle cx="32" cy="34" r="12.6"/>
   <circle cx="27" cy="29" r="1" fill="currentColor" stroke="none"/>
@@ -11,4 +12,5 @@
   <circle cx="28" cy="34.5" r="1" fill="currentColor" stroke="none"/>
   <circle cx="36" cy="32.5" r="1" fill="currentColor" stroke="none"/>
   <circle cx="33" cy="40" r="1" fill="currentColor" stroke="none"/>
+</g><!--norm-->
 </svg>

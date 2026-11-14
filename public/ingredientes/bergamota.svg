@@ -1,5 +1,7 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" fill="none" stroke="currentColor" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round" role="img" aria-label="Bergamota">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" fill="none" stroke="currentColor" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round" role="img" aria-label="Bergamota">
+<g data-norm transform="translate(32 32) scale(0.863) translate(-32.50 -31.47)" stroke-width="1.390">
   <circle cx="32" cy="36" r="14"/>
   <path d="M32 22c0-3 1-5 3-6.5"/>
   <path d="M35 15.5c3.6-3 8.6-3.4 12-1-3.2 3.4-8.4 3.8-12 1z"/>
+</g><!--norm-->
 </svg>
