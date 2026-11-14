@@ -1,0 +1,5 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" fill="none" stroke="currentColor" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round" role="img" aria-label="Higo">
+  <path d="M32 18c-2 4-5 6-8 10-4 6-4 14 0 19 4 4 12 4 16 0 4-5 4-13 0-19-3-4-6-6-8-10z"/>
+  <path d="M32 18v-5"/>
+  <path d="M29 51c1-1 5-1 6 0" opacity=".6"/>
+</svg>
