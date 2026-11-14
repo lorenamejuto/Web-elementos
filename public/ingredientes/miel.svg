@@ -1,5 +1,5 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" fill="none" stroke="currentColor" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round" role="img" aria-label="Miel">
-<g data-norm transform="translate(32 32) scale(1.053) translate(-31.57 -33.00)" stroke-width="1.140">
+<g data-norm="1" transform="translate(32 32) scale(1.053) translate(-31.57 -33.00)" stroke-width="1.140">
   <path d="M42 14L30 32"/>
   <path d="M30.5 31c-2.4-1.6-6-.4-8 2.6s-1.8 6.8.6 8.4 6 .4 8-2.6 1.8-6.8-.6-8.4z"/>
   <path d="M23.2 35.6l7.4 5M22.8 39.4l5.4 3.6M25.6 32.8l6.4 4.2" opacity=".7"/>

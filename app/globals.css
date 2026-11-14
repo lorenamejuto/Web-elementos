@@ -17,6 +17,7 @@
   --color-arena: #ebe5da;
   --color-tinta: #303039;
   --color-oro: #a8823a;
+  --color-oro-oscuro: #8a6a2c; /* íconos chicos: el oro base queda tenue sobre papel */
 
   /* Paleta ELEMENTOS — cada color lleva el nombre de una creación */
   --color-misterio: #002060;

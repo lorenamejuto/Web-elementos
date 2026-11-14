@@ -1,5 +1,5 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" fill="none" stroke="currentColor" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round" role="img" aria-label="Neroli">
-<g data-norm transform="translate(32 32) scale(1.379) translate(-31.98 -31.45)" stroke-width="0.870">
+<g data-norm="1" transform="translate(32 32) scale(1.379) translate(-31.98 -31.45)" stroke-width="0.870">
   <path d="M32 32c-2.4-3.2-2.6-8-.2-11.6 2.6 3.4 2.6 8.2.2 11.6z" transform="rotate(0 32 32)"/>
   <path d="M32 32c-2.4-3.2-2.6-8-.2-11.6 2.6 3.4 2.6 8.2.2 11.6z" transform="rotate(72 32 32)"/>
   <path d="M32 32c-2.4-3.2-2.6-8-.2-11.6 2.6 3.4 2.6 8.2.2 11.6z" transform="rotate(144 32 32)"/>

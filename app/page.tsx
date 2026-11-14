@@ -1,6 +1,7 @@
 import Image from 'next/image'
 import { FlaskConical, GraduationCap, ShieldCheck } from 'lucide-react'
 import { MenuMovil } from '@/components/menu-movil'
+import { INGREDIENTES, textoNotas, type IngredienteId } from '@/lib/ingredientes'
 import { PestanasColeccion } from '@/components/pestanas-coleccion'
 import { PortadaRotativa } from '@/components/portada-rotativa'
 import { contacto, perfumeriaDeNicho, perfumeriaHogar, type Linea, type Mundo, type Producto } from '@/lib/catalogo'
@@ -106,11 +107,29 @@ function Territorio() {
   )
 }
 
+// Notas del producto: ícono chico + nombre. El ícono se pinta con el color del texto (máscara CSS sobre el SVG).
+function Notas({ ids }: { ids: IngredienteId[] }) {
+  return (
+    <ul className="mt-3 flex flex-wrap gap-x-5 gap-y-2" aria-label="Notas">
+      {ids.map((id) => (
+        <li key={id} className="flex items-center gap-1.5 font-serif text-[0.95rem] italic text-tinta/75">
+          <span
+            aria-hidden="true"
+            className="size-7 shrink-0 bg-oro-oscuro"
+            style={{ mask: `url(/ingredientes/${INGREDIENTES[id].icono}.svg) center / contain no-repeat`, WebkitMask: `url(/ingredientes/${INGREDIENTES[id].icono}.svg) center / contain no-repeat` }}
+          />
+          {INGREDIENTES[id].nombre}
+        </li>
+      ))}
+    </ul>
+  )
+}
+
 function TarjetaProducto({ producto, indice }: { producto: Producto; indice: number }) {
   return (
     <article className="group">
       <div className="relative aspect-[3/4] overflow-hidden bg-arena">
-        <Image src={producto.imagen} alt={`${producto.nombre}, ${producto.formato.toLowerCase()} ELEMENTOS con notas de ${producto.notas.toLowerCase()}`} fill sizes="(min-width: 1024px) 30vw, (min-width: 640px) 45vw, 90vw" className="object-cover transition-transform duration-700 group-hover:scale-[1.04]" />
+        <Image src={producto.imagen} alt={`${producto.nombre}, ${producto.formato.toLowerCase()} ELEMENTOS con notas de ${textoNotas(producto.notas)}`} fill sizes="(min-width: 1024px) 30vw, (min-width: 640px) 45vw, 90vw" className="object-cover transition-transform duration-700 group-hover:scale-[1.04]" />
         <span className="absolute left-4 top-4 bg-papel/90 px-2.5 py-1 font-sans text-[10px] font-semibold tracking-[0.2em] text-tinta">{String(indice + 1).padStart(2, '0')}</span>
       </div>
       <div className="mt-5 border-t-2 pt-4" style={{ borderColor: producto.color }}>
@@ -118,7 +137,7 @@ function TarjetaProducto({ producto, indice }: { producto: Producto; indice: num
           <h3 className="font-display text-[1.75rem] leading-tight text-misterio">{producto.nombre}</h3>
           <span className="shrink-0 font-sans text-[10px] uppercase tracking-[0.2em] text-tinta/50">{producto.formato}</span>
         </div>
-        <p className="mt-2 font-serif text-base italic text-tinta/75">{producto.notas}</p>
+        <Notas ids={producto.notas} />
         {producto.relato && <p className="mt-3 font-serif text-base leading-relaxed text-tinta/80">{producto.relato}</p>}
       </div>
     </article>

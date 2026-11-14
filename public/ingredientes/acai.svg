@@ -1,5 +1,5 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" fill="none" stroke="currentColor" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round" role="img" aria-label="Açaí">
-<g data-norm transform="translate(32 32) scale(0.813) translate(-30.25 -30.90)" stroke-width="1.475">
+<g data-norm="1" transform="translate(32 32) scale(0.813) translate(-30.25 -30.90)" stroke-width="1.475">
   <path d="M30 10c2 6 2 12 0 18"/>
   <path d="M30 22c-5 2-9 7-11 13M30 25c-1 5-1 10 1 15M30.6 22c5 1.4 9 6 10.4 12"/>
   <circle cx="18" cy="39" r="2.3"/>

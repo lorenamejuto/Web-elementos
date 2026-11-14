@@ -1,10 +1,12 @@
+import type { IngredienteId } from './ingredientes'
+
 // Catálogo ELEMENTOS, organizado en dos mundos.
 // Las notas están tomadas tal cual de las etiquetas de cada producto.
 // Para sumar la historia de una creación, completar `relato` (no inventar: si no existe, dejarlo vacío).
 
 export type Producto = {
   nombre: string
-  notas: string
+  notas: IngredienteId[] // en el orden de la etiqueta; ver lib/ingredientes.ts
   formato: string
   color: string
   imagen: string
@@ -55,21 +57,21 @@ export const perfumeriaDeNicho: Mundo = {
           titulo: 'Perfumes',
           descripcion: 'Composiciones de autor para llevar sobre la piel.',
           productos: [
-            { nombre: 'Divino Tesoro', notas: 'Bergamota, jazmín, patchouli', formato: 'Perfume', color: '#884538', imagen: '/img/divino-tesoro.jpg' },
-            { nombre: 'Éxtasis', notas: 'Iso E Super, pomelo, oud', formato: 'Perfume', color: '#b42630', imagen: '/img/extasis.jpg' },
-            { nombre: 'Ritual', notas: 'Guayaba, flores blancas, miel', formato: 'Perfume', color: '#997b4b', imagen: '/img/ritual.jpg' },
-            { nombre: 'Dharma', notas: 'Jazmín, bouquet, cardamomo', formato: 'Perfume', color: '#e67f4c', imagen: '/img/dharma.jpg' },
-            { nombre: 'Presagio', notas: 'Orquídea, jengibre', formato: 'Perfume', color: '#556b31', imagen: '/img/presagio.jpg' },
-            { nombre: 'Eclipse', notas: 'Caramelo salado, cardamomo', formato: 'Perfume', color: '#8f8d8d', imagen: '/img/eclipse.jpg' },
+            { nombre: 'Divino Tesoro', notas: ['bergamota', 'jazmin', 'patchouli'], formato: 'Perfume', color: '#884538', imagen: '/img/divino-tesoro.jpg' },
+            { nombre: 'Éxtasis', notas: ['iso-e-super', 'pomelo', 'oud'], formato: 'Perfume', color: '#b42630', imagen: '/img/extasis.jpg' },
+            { nombre: 'Ritual', notas: ['guayaba', 'flores-blancas', 'miel'], formato: 'Perfume', color: '#997b4b', imagen: '/img/ritual.jpg' },
+            { nombre: 'Dharma', notas: ['jazmin', 'bouquet', 'cardamomo'], formato: 'Perfume', color: '#e67f4c', imagen: '/img/dharma.jpg' },
+            { nombre: 'Presagio', notas: ['orquidea', 'jengibre'], formato: 'Perfume', color: '#556b31', imagen: '/img/presagio.jpg' },
+            { nombre: 'Eclipse', notas: ['caramelo-salado', 'cardamomo'], formato: 'Perfume', color: '#8f8d8d', imagen: '/img/eclipse.jpg' },
           ],
         },
         {
           titulo: 'Brumas',
           descripcion: 'Más livianas, para usar en cualquier momento del día.',
           productos: [
-            { nombre: 'Mantra', notas: 'Açaí, pepino, melón', formato: 'Bruma · 100 ml', color: '#521776', imagen: '/img/mantra.webp' },
-            { nombre: 'Verdalia', notas: 'Bambú, petitgrain', formato: 'Bruma · 100 ml', color: '#556b31', imagen: '/img/verdalia.webp' },
-            { nombre: 'Alquimia', notas: 'Rosa búlgara, sándalo', formato: 'Bruma · 100 ml', color: '#823039', imagen: '/img/alquimia.webp' },
+            { nombre: 'Mantra', notas: ['acai', 'pepino', 'melon'], formato: 'Bruma · 100 ml', color: '#521776', imagen: '/img/mantra.webp' },
+            { nombre: 'Verdalia', notas: ['bambu', 'petitgrain'], formato: 'Bruma · 100 ml', color: '#556b31', imagen: '/img/verdalia.webp' },
+            { nombre: 'Alquimia', notas: ['rosa-bulgara', 'sandalo'], formato: 'Bruma · 100 ml', color: '#823039', imagen: '/img/alquimia.webp' },
           ],
         },
       ],
@@ -97,18 +99,18 @@ export const perfumeriaHogar: Mundo = {
           titulo: 'Difusores',
           descripcion: 'Un aroma constante que acompaña el espacio.',
           productos: [
-            { nombre: 'Calma', notas: 'Mango y maracuyá', formato: 'Difusor', color: '#b42630', imagen: '/img/calma.jpg' },
-            { nombre: 'Brisa', notas: 'Ananá y notas verdes', formato: 'Difusor', color: '#556b31', imagen: '/img/brisa.jpg' },
-            { nombre: 'Nostalgia', notas: 'Lavanda e higo', formato: 'Difusor', color: '#521776', imagen: '/img/nostalgia.jpg' },
+            { nombre: 'Calma', notas: ['mango', 'maracuya'], formato: 'Difusor', color: '#b42630', imagen: '/img/calma.jpg' },
+            { nombre: 'Brisa', notas: ['anana', 'notas-verdes'], formato: 'Difusor', color: '#556b31', imagen: '/img/brisa.jpg' },
+            { nombre: 'Nostalgia', notas: ['lavanda', 'higo'], formato: 'Difusor', color: '#521776', imagen: '/img/nostalgia.jpg' },
           ],
         },
         {
           titulo: 'Perfuminas',
           descripcion: 'Para perfumar ambientes y textiles en el momento.',
           productos: [
-            { nombre: 'Secreto', notas: 'Fougère, cardamomo, violetas', formato: 'Perfumina · 250 ml', color: '#012060', imagen: '/img/secreto.webp' },
-            { nombre: 'Raíces', notas: 'Té, lavanda', formato: 'Perfumina · 250 ml', color: '#717bb7', imagen: '/img/raices.webp' },
-            { nombre: 'Revelación', notas: 'Vainilla, neroli', formato: 'Perfumina · 250 ml', color: '#6a8c9a', imagen: '/img/revelacion.webp' },
+            { nombre: 'Secreto', notas: ['fougere', 'cardamomo', 'violetas'], formato: 'Perfumina · 250 ml', color: '#012060', imagen: '/img/secreto.webp' },
+            { nombre: 'Raíces', notas: ['te', 'lavanda'], formato: 'Perfumina · 250 ml', color: '#717bb7', imagen: '/img/raices.webp' },
+            { nombre: 'Revelación', notas: ['vainilla', 'neroli'], formato: 'Perfumina · 250 ml', color: '#6a8c9a', imagen: '/img/revelacion.webp' },
           ],
         },
       ],

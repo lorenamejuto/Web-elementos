@@ -3,6 +3,7 @@
 import Image from 'next/image'
 import { useEffect, useState } from 'react'
 import type { Producto } from '@/lib/catalogo'
+import { textoNotas } from '@/lib/ingredientes'
 
 const INTERVALO_MS = 5500
 
@@ -38,7 +39,7 @@ export function PortadaRotativa({ perfumes }: { perfumes: Producto[] }) {
     setCargadas((prev) => (prev.has((actual + 2) % n) ? prev : new Set(prev).add((actual + 2) % n)))
   }, [actual, n])
 
-  const alt = (p: Producto) => `Perfume ${p.nombre} de ELEMENTOS, con notas de ${p.notas.toLowerCase()}`
+  const alt = (p: Producto) => `Perfume ${p.nombre} de ELEMENTOS, con notas de ${textoNotas(p.notas)}`
 
   return (
     <div className="relative mx-auto w-full max-w-[460px]">

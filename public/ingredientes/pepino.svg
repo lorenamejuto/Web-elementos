@@ -1,5 +1,5 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" fill="none" stroke="currentColor" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round" role="img" aria-label="Pepino">
-<g data-norm transform="translate(32 32) scale(1.000) translate(-32.00 -32.00)" stroke-width="1.200">
+<g data-norm="1" transform="translate(32 32) scale(1.000) translate(-32.00 -32.00)" stroke-width="1.200">
   <circle cx="32" cy="32" r="16"/>
   <circle cx="32" cy="32" r="13.6" stroke-width=".8" opacity=".55"/>
   <path d="M32 32V22.5M32 32l8.2 4.8M32 32l-8.2 4.8" stroke-width=".8" opacity=".55"/>

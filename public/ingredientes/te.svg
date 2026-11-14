@@ -1,5 +1,5 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" fill="none" stroke="currentColor" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round" role="img" aria-label="Té">
-<g data-norm transform="translate(32 32) scale(1.015) translate(-31.20 -36.30)" stroke-width="1.182">
+<g data-norm="1" transform="translate(32 32) scale(1.015) translate(-31.20 -36.30)" stroke-width="1.182">
   <path d="M32 56c0-10 1-18 4-26"/>
   <path d="M33.4 42c-7 0-12.4-4.6-13.4-11.6 7-.4 12.4 4.4 13.4 11.6z"/>
   <path d="M34.6 36c5.6-2.6 8.6-8.4 7.6-14.6-5.8 2.4-8.8 8.2-7.6 14.6z"/>
