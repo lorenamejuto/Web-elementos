@@ -7,6 +7,8 @@ import type { IngredienteId } from './ingredientes'
 export type Producto = {
   nombre: string
   notas: IngredienteId[] // en el orden de la etiqueta; ver lib/ingredientes.ts
+  // Solo perfumes: notas por nivel. PROPUESTA a validar por ELEMENTOS (clasificación por volatilidad típica).
+  piramide?: { salida: IngredienteId[]; corazon: IngredienteId[]; base: IngredienteId[] }
   formato: string
   color: string
   imagen: string
@@ -57,12 +59,12 @@ export const perfumeriaDeNicho: Mundo = {
           titulo: 'Perfumes',
           descripcion: 'Composiciones de autor para llevar sobre la piel.',
           productos: [
-            { nombre: 'Divino Tesoro', notas: ['bergamota', 'jazmin', 'patchouli'], formato: 'Perfume', color: '#884538', imagen: '/img/divino-tesoro.jpg' },
-            { nombre: 'Éxtasis', notas: ['iso-e-super', 'pomelo', 'oud'], formato: 'Perfume', color: '#b42630', imagen: '/img/extasis.jpg' },
-            { nombre: 'Ritual', notas: ['guayaba', 'flores-blancas', 'miel'], formato: 'Perfume', color: '#997b4b', imagen: '/img/ritual.jpg' },
-            { nombre: 'Dharma', notas: ['jazmin', 'bouquet', 'cardamomo'], formato: 'Perfume', color: '#e67f4c', imagen: '/img/dharma.jpg' },
-            { nombre: 'Presagio', notas: ['orquidea', 'jengibre'], formato: 'Perfume', color: '#556b31', imagen: '/img/presagio.jpg' },
-            { nombre: 'Eclipse', notas: ['caramelo-salado', 'cardamomo'], formato: 'Perfume', color: '#8f8d8d', imagen: '/img/eclipse.jpg' },
+            { nombre: 'Divino Tesoro', notas: ['bergamota', 'jazmin', 'patchouli'], piramide: { salida: ['bergamota'], corazon: ['jazmin'], base: ['patchouli'] }, formato: 'Perfume', color: '#884538', imagen: '/img/divino-tesoro.jpg' },
+            { nombre: 'Éxtasis', notas: ['iso-e-super', 'pomelo', 'oud'], piramide: { salida: ['pomelo'], corazon: ['iso-e-super'], base: ['oud'] }, formato: 'Perfume', color: '#b42630', imagen: '/img/extasis.jpg' },
+            { nombre: 'Ritual', notas: ['guayaba', 'flores-blancas', 'miel'], piramide: { salida: ['guayaba'], corazon: ['flores-blancas'], base: ['miel'] }, formato: 'Perfume', color: '#997b4b', imagen: '/img/ritual.jpg' },
+            { nombre: 'Dharma', notas: ['jazmin', 'bouquet', 'cardamomo'], piramide: { salida: ['cardamomo'], corazon: ['jazmin', 'bouquet'], base: [] }, formato: 'Perfume', color: '#e67f4c', imagen: '/img/dharma.jpg' },
+            { nombre: 'Presagio', notas: ['orquidea', 'jengibre'], piramide: { salida: ['jengibre'], corazon: ['orquidea'], base: [] }, formato: 'Perfume', color: '#556b31', imagen: '/img/presagio.jpg' },
+            { nombre: 'Eclipse', notas: ['caramelo-salado', 'cardamomo'], piramide: { salida: ['cardamomo'], corazon: [], base: ['caramelo-salado'] }, formato: 'Perfume', color: '#8f8d8d', imagen: '/img/eclipse.jpg' },
           ],
         },
         {

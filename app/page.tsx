@@ -107,22 +107,41 @@ function Territorio() {
   )
 }
 
-// Notas del producto: ícono chico + nombre. El ícono se pinta con el color del texto (máscara CSS sobre el SVG).
-function Notas({ ids }: { ids: IngredienteId[] }) {
+function IconoIngrediente({ id }: { id: IngredienteId }) {
+  const url = `url(/ingredientes/${INGREDIENTES[id].icono}.svg) center / contain no-repeat`
+  // El ícono se pinta con el color de fondo a través de una máscara CSS sobre el SVG.
+  return <span aria-hidden="true" className="size-7 shrink-0 bg-oro-oscuro" style={{ mask: url, WebkitMask: url }} />
+}
+
+// Perfumes: notas en tres niveles (salida, corazón, base), con ícono. Un nivel vacío no se muestra.
+function Piramide({ piramide }: { piramide: NonNullable<Producto['piramide']> }) {
+  const niveles = [
+    { titulo: 'Salida', ids: piramide.salida },
+    { titulo: 'Corazón', ids: piramide.corazon },
+    { titulo: 'Base', ids: piramide.base },
+  ].filter((n) => n.ids.length > 0)
   return (
-    <ul className="mt-3 flex flex-wrap gap-x-5 gap-y-2" aria-label="Notas">
-      {ids.map((id) => (
-        <li key={id} className="flex items-center gap-1.5 font-serif text-[0.95rem] italic text-tinta/75">
-          <span
-            aria-hidden="true"
-            className="size-7 shrink-0 bg-oro-oscuro"
-            style={{ mask: `url(/ingredientes/${INGREDIENTES[id].icono}.svg) center / contain no-repeat`, WebkitMask: `url(/ingredientes/${INGREDIENTES[id].icono}.svg) center / contain no-repeat` }}
-          />
-          {INGREDIENTES[id].nombre}
-        </li>
+    <dl className="mt-4 space-y-2.5">
+      {niveles.map((n) => (
+        <div key={n.titulo} className="grid grid-cols-[4.75rem_1fr] items-center gap-3">
+          <dt className="font-sans text-[10px] font-semibold uppercase tracking-[0.22em] text-tinta/50">{n.titulo}</dt>
+          <dd className="flex flex-wrap gap-x-5 gap-y-1.5">
+            {n.ids.map((id) => (
+              <span key={id} className="flex items-center gap-1.5 font-serif text-[0.95rem] italic text-tinta/75">
+                <IconoIngrediente id={id} />
+                {INGREDIENTES[id].nombre}
+              </span>
+            ))}
+          </dd>
+        </div>
       ))}
-    </ul>
+    </dl>
   )
+}
+
+// Resto de los productos: notas en texto, como en la etiqueta.
+function notasEnTexto(ids: IngredienteId[]) {
+  return ids.map((id, i) => (i === 0 || id === 'iso-e-super' ? INGREDIENTES[id].nombre : INGREDIENTES[id].nombre.toLowerCase())).join(', ')
 }
 
 function TarjetaProducto({ producto, indice }: { producto: Producto; indice: number }) {
@@ -137,7 +156,7 @@ function TarjetaProducto({ producto, indice }: { producto: Producto; indice: num
           <h3 className="font-display text-[1.75rem] leading-tight text-misterio">{producto.nombre}</h3>
           <span className="shrink-0 font-sans text-[10px] uppercase tracking-[0.2em] text-tinta/50">{producto.formato}</span>
         </div>
-        <Notas ids={producto.notas} />
+        {producto.piramide ? <Piramide piramide={producto.piramide} /> : <p className="mt-2 font-serif text-base italic text-tinta/75">{notasEnTexto(producto.notas)}</p>}
         {producto.relato && <p className="mt-3 font-serif text-base leading-relaxed text-tinta/80">{producto.relato}</p>}
       </div>
     </article>
