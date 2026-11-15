@@ -27,10 +27,16 @@ function Capitulo({ nombre, acento }: { nombre: string; acento: string }) {
   return <h2 className={`mb-8 font-display text-[clamp(2.55rem,5.95vw,5.5rem)] italic leading-[0.95] tracking-[-0.02em] lg:mb-10 ${acento}`}>{nombre}</h2>
 }
 
+// Logo vectorial: toma el color de fondo (bg-*) a través de una máscara sobre el SVG.
+function Logo({ className = '' }: { className?: string }) {
+  const url = 'url(/img/logo-elementos.svg) center / contain no-repeat'
+  return <span aria-hidden="true" className={`block shrink-0 ${className}`} style={{ mask: url, WebkitMask: url }} />
+}
+
 function Marca({ claro = false }: { claro?: boolean }) {
   return (
     <a href="#inicio" className="flex shrink-0 items-center gap-3" aria-label="ELEMENTOS — Universo Olfativo, ir al inicio">
-      <Image src={claro ? '/img/logo-elementos-claro.png' : '/img/logo-elementos.png'} alt="" width={44} height={44} priority />
+      <Logo className={`size-11 ${claro ? 'bg-papel' : 'bg-oro'}`} />
       <span className="flex flex-col leading-none">
         <span className={`font-sans text-[15px] font-medium tracking-[0.32em] ${claro ? 'text-papel' : 'text-misterio'}`}>ELEMENTOS</span>
         <span className={`mt-1.5 font-serif text-[12px] italic ${claro ? 'text-papel/70' : 'text-oro'}`}>Universo Olfativo</span>
@@ -366,7 +372,7 @@ function Nosotras() {
         </div>
 
         <figure className="mx-auto my-24 max-w-4xl text-center lg:my-32">
-          <Image src="/img/logo-elementos.png" alt="" width={48} height={48} className="mx-auto" />
+          <Logo className="mx-auto size-12 bg-oro" />
           <blockquote className="mt-8 font-display text-[clamp(1.8rem,3.6vw,3rem)] italic leading-[1.2] text-misterio">
             “ELEMENTOS sería más pequeño y más monocromático sin la mirada de la otra.”
           </blockquote>
@@ -415,7 +421,7 @@ function Nosotras() {
         </div>
 
         <div className="mx-auto mt-24 flex max-w-3xl items-start gap-5 bg-arena p-6 lg:p-8">
-          <Image src="/img/logo-elementos.png" alt="" width={40} height={40} className="mt-1 shrink-0" />
+          <Logo className="mt-1 size-10 bg-oro" />
           <p className="font-serif text-base leading-relaxed text-tinta/80">
             Antes nos conocían como <span className="italic">Elementos Cosmética</span>. No empezamos de cero: el nombre cambia porque el universo creció. Hoy somos <span className="font-sans text-[13px] font-semibold tracking-[0.2em] text-misterio">ELEMENTOS</span> <span className="italic text-oro">Universo Olfativo</span>.
           </p>
